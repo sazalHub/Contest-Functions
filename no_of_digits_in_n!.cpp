@@ -1,21 +1,20 @@
 #include<bits/stdc++.h>
+#define ll long long
 using namespace std;
-double res=0;
-double no_of_digits(int x)
-{
-    if (x==1)
-        return 0;
-    else
-    {
-        res=log10(x)+no_of_digits(x-1);
-    }
-    return res;
-}
 int main ()
 {
-    int n;
-    while(cin>>n)
+    double digit[1000001];
+    for (ll i=1;i<=1000001;i++)
+        digit[i]=log(i*1.00)+digit[i-1];
+
+    ll cases,caseno=0,num,base;
+    scanf("%lld",&cases);
+    while(cases--)
     {
-        cout<<floor(no_of_digits(n))+1<<endl;
+        scanf("%lld%lld",&num,&base);
+        double ans=digit[num]/(log(base*1.0));
+        ll x=floor(ans)+1;
+        printf("Case %lld: %lld\n",++caseno,x);
     }
+    return 0;
 }
